@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2sv3ep33i7gt"]
+
+[ext_resource type="Script" uid="uid://6oglxr1kt2xs" path="res://scripts/image_panel/image_panel_provider.gd" id="1_jlx0t"]
+[ext_resource type="PackedScene" uid="uid://cha52md0ccgm0" path="res://scenes/image_panel.tscn" id="1_q7572"]
+
+[node name="Frame" type="Node3D"]
+script = ExtResource("1_jlx0t")
+
+[node name="SegmentedPanel" parent="." instance=ExtResource("1_q7572")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+img_process = 1
+kernel_size = 4
+
+[node name="OriginalPanel" parent="." instance=ExtResource("1_q7572")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+kernel_size = 4
+
+[node name="ErodePanel" parent="." instance=ExtResource("1_q7572")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+img_process = 2
+kernel_size = 4
+
+[node name="DilatePanel" parent="." instance=ExtResource("1_q7572")]
+img_process = 3
+kernel_size = 4
+
+[node name="OpeningPanel" parent="." instance=ExtResource("1_q7572")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+img_process = 4
+kernel_size = 4
+
+[node name="ClosingPanel" parent="." instance=ExtResource("1_q7572")]
+transform = Transform3D(0.99998325, 0.005564865, -0.0015647402, -0.005568907, 0.9999811, -0.0025884432, 0.001550294, 0.0025971213, 0.9999954, 6, 0, 0)
+img_process = 5
+kernel_size = 4

@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://cha52md0ccgm0"]
+
+[ext_resource type="Script" uid="uid://bxq75onfpl7yg" path="res://scripts/image_panel/image_panel_handler.gd" id="1_caodv"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jpqpd"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eyfl2"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_jpqpd")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_offset = Vector3(0.5, 0.5, 0)
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_qsvxr"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_eyfl2")
+size = Vector3(2, 2, 0.15)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_dcgww"]
+data = PackedVector3Array(-1, 1, 0.074999996, 1, 1, 0.074999996, -1, -1, 0.074999996, 1, 1, 0.074999996, 1, -1, 0.074999996, -1, -1, 0.074999996, 1, 1, -0.074999996, -1, 1, -0.074999996, 1, -1, -0.074999996, -1, 1, -0.074999996, -1, -1, -0.074999996, 1, -1, -0.074999996, 1, 1, 0.074999996, 1, 1, -0.074999996, 1, -1, 0.074999996, 1, 1, -0.074999996, 1, -1, -0.074999996, 1, -1, 0.074999996, -1, 1, -0.074999996, -1, 1, 0.074999996, -1, -1, -0.074999996, -1, 1, 0.074999996, -1, -1, 0.074999996, -1, -1, -0.074999996, 1, 1, 0.074999996, -1, 1, 0.074999996, 1, 1, -0.074999996, -1, 1, 0.074999996, -1, 1, -0.074999996, 1, 1, -0.074999996, -1, -1, 0.074999996, 1, -1, 0.074999996, -1, -1, -0.074999996, 1, -1, 0.074999996, 1, -1, -0.074999996, -1, -1, -0.074999996)
+
+[node name="ImagePanel" type="Node3D"]
+script = ExtResource("1_caodv")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+use_taa = true
+use_occlusion_culling = true
+use_hdr_2d = true
+canvas_item_default_texture_filter = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/CenterContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="SubViewport/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="FilterLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0.05)
+texture_filter = 2
+text = "Sample"
+outline_size = 8
+uppercase = true
+
+[node name="Panel" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_qsvxr")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Panel"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Panel/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_dcgww")

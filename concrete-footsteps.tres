@@ -1,0 +1,13 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://ckpxqkqfffdge"]
+
+[ext_resource type="AudioStream" uid="uid://cl43w5o4v8m2k" path="res://assets/audio/footsteps/yoyodam234/166509__yoyodaman234__concrete-footstep-1.wav" id="1_tpd0k"]
+[ext_resource type="AudioStream" uid="uid://dl0q8pfcrk3da" path="res://assets/audio/footsteps/yoyodam234/166508__yoyodaman234__concrete-footstep-2.wav" id="2_s443k"]
+[ext_resource type="AudioStream" uid="uid://cx1hskhrfacoo" path="res://assets/audio/footsteps/yoyodam234/166507__yoyodaman234__concrete-footstep-3.wav" id="3_tb5cx"]
+[ext_resource type="AudioStream" uid="uid://d115mw22jrv00" path="res://assets/audio/footsteps/yoyodam234/166506__yoyodaman234__concrete-footstep-4.wav" id="4_0uf4a"]
+
+[resource]
+streams_count = 4
+stream_0/stream = ExtResource("1_tpd0k")
+stream_1/stream = ExtResource("2_s443k")
+stream_2/stream = ExtResource("3_tb5cx")
+stream_3/stream = ExtResource("4_0uf4a")

@@ -1,0 +1,144 @@
+[gd_scene load_steps=14 format=3 uid="uid://dlamxmw3burha"]
+
+[ext_resource type="Texture2D" uid="uid://bat3nb42ucmuo" path="res://assets/textures/kenney-prototype/texture_04.svg" id="4_tefeu"]
+[ext_resource type="Texture2D" uid="uid://buttsimctqwgx" path="res://assets/textures/kenney-prototype/texture_06.svg" id="5_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="5_tbgi4"]
+[ext_resource type="Image" uid="uid://dsyh8ayybmkp8" path="res://images/400x_binary_sample.png" id="5_tipki"]
+[ext_resource type="PackedScene" uid="uid://c2sv3ep33i7gt" path="res://scenes/frame.tscn" id="6_o6xl0"]
+[ext_resource type="Image" uid="uid://b037t4hgvtjsv" path="res://images/avatar-501-resample.png" id="6_tipki"]
+[ext_resource type="Image" uid="uid://c35ygg0mrlnhg" path="res://images/pngtree-sycamore-leaf-wide-and-lobed-isolated-on-transparent-background-png-image_16560565.png" id="9_85g3d"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]
+sky_horizon_color = Color(0.68811786, 0.69674766, 0.7110512, 1)
+ground_bottom_color = Color(0.22614959, 0.19166878, 0.15288296, 1)
+ground_horizon_color = Color(0.68811786, 0.69674766, 0.7110512, 1)
+
+[sub_resource type="Sky" id="Sky_h2yge"]
+sky_material = SubResource("ProceduralSkyMaterial_0xm2m")
+
+[sub_resource type="Environment" id="Environment_1bvp3"]
+background_mode = 2
+sky = SubResource("Sky_h2yge")
+tonemap_mode = 2
+ssao_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_min_cell_size = 0.5527344
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tefeu"]
+albedo_texture = ExtResource("4_tefeu")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o6xl0"]
+albedo_texture = ExtResource("5_o6xl0")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="SystemFont" id="SystemFont_tipki"]
+font_names = PackedStringArray("Monospace")
+
+[node name="Main" type="Node3D"]
+
+[node name="Character" parent="." instance=ExtResource("5_tbgi4")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0.5, 0)
+default_reticle = "uid://coqpusufa8a6k"
+jumping_enabled = false
+in_air_momentum = false
+crouch_enabled = false
+dynamic_fov = false
+
+[node name="Mesh" parent="Character" index="0"]
+visible = false
+
+[node name="RayCast3D" parent="Character/Head/Camera" index="0"]
+enabled = false
+
+[node name="HeadbobAnimation" parent="Character/Head" index="1"]
+active = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1bvp3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.9659257, 0.18301268, -0.18301268, 0, 0.7071067, 0.7071067, 0.258819, -0.6830126, 0.6830126, 0, 24, 0)
+shadow_enabled = true
+
+[node name="Wall" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 11.5)
+operation = 1
+use_collision = true
+size = Vector3(24, 6, 1)
+material = SubResource("StandardMaterial3D_tefeu")
+
+[node name="Wall3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 3.5, 0)
+operation = 1
+use_collision = true
+size = Vector3(1, 6, 22)
+material = SubResource("StandardMaterial3D_tefeu")
+
+[node name="Wall4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 3.5, 0)
+operation = 1
+use_collision = true
+size = Vector3(1, 6, 22)
+material = SubResource("StandardMaterial3D_tefeu")
+
+[node name="Wall2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -11.5)
+operation = 1
+use_collision = true
+size = Vector3(24, 6, 1)
+material = SubResource("StandardMaterial3D_tefeu")
+
+[node name="Wall5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -6.5)
+operation = 1
+use_collision = true
+size = Vector3(16, 6, 1)
+material = SubResource("StandardMaterial3D_tefeu")
+
+[node name="Floor" type="CSGBox3D" parent="."]
+material_override = SubResource("StandardMaterial3D_o6xl0")
+operation = 1
+use_collision = true
+size = Vector3(24, 1, 24)
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 2.5, 10.95)
+texture_filter = 2
+outline_modulate = Color(0.39118534, 0.39118537, 0.39118525, 1)
+text = "Morphological filtering adalah teknik pemrosesan citra yang menggunakan operasi morfologi matematika—seperti erosi, dilasi, opening, dan closing—untuk memodifikasi struktur geometris objek dalam gambar. Dengan menerapkan operasi‑operasi ini, filter dapat menghilangkan noise, menutup celah kecil, atau menonjolkan fitur tertentu berdasarkan bentuk dan ukuran elemen struktural yang dipilih. Singkatnya, ia “memfilter” citra dengan cara memanipulasi bentuk (morfologi) komponen‑komponennya."
+font = SubResource("SystemFont_tipki")
+outline_size = 6
+autowrap_mode = 2
+justification_flags = 171
+width = 1250.0
+
+[node name="Label3D2" type="Label3D" parent="."]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -10.95, 4.5, 7.45)
+texture_filter = 2
+outline_modulate = Color(0.39118534, 0.39118537, 0.39118525, 1)
+text = "Dengan hanya menggunakan teknik morfologi saja, hasil yang didapatkan pada citra ini kurang baik karena terdapat latar belakang yang intensitasnya hampir sama dengan objek yang akan diambil."
+font = SubResource("SystemFont_tipki")
+outline_size = 6
+autowrap_mode = 2
+justification_flags = 171
+width = 1250.0
+
+[node name="Frame" parent="." instance=ExtResource("6_o6xl0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -6)
+img_path = ExtResource("5_tipki")
+
+[node name="Frame2" parent="." instance=ExtResource("6_o6xl0")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11, 2, 3)
+img_path = ExtResource("6_tipki")
+kernel_size = 4
+
+[node name="Frame3" parent="." instance=ExtResource("6_o6xl0")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 11, 2, 3)
+img_path = ExtResource("9_85g3d")
+
+[editable path="Character"]
