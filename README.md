@@ -5,6 +5,10 @@ menggunakan GDScript. Untuk menjalankannya dapat diakses melalui tautan berikut.
 
 https://godotengine.org
 
+## Demo
+
+https://github.com/user-attachments/assets/f1cd59c1-5cf8-490b-a51d-4ee55cede3ae
+
 ## Pembahasan
 
 Pada project ini diimplementasikan dua tahap dalam memproses citra digital yaitu
