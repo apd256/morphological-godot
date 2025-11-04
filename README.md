@@ -7,7 +7,7 @@ https://godotengine.org
 
 ## Demo
 
-[demo.webm](https://github.com/user-attachments/assets/f4236033-cd1f-443d-bae0-2f8e0875f43f)
+![](demo.gif)
 
 ## Pembahasan
 
